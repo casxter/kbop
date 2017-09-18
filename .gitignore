@@ -76,6 +76,7 @@ fabric.properties
 .gradle
 .gradle/
 /build/
+/**/build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -103,3 +104,4 @@ buildNumber.properties
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 /.idea/
+/**/out
