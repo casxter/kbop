@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>kbop</title>
+    <link rel="icon" type="image/x-icon" href="https://www.python.org/static/favicon.ico">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="/css/navbar-static-top.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- Static navbar -->
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Kbop</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/page/home.html">主页</a></li>
+                <li><a href="/page/about.html">关于</a></li>
+                <li><a href="/page/contact.html">联系</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <form class="navbar-form navbar-right">
+                    <input id="search" data-q="${qstr}" type="text" class="form-control" placeholder="搜索...">
+                    <div class="btn-group">
+                        <button id="searchbtn" type="button" class="btn btn-default">Go</button>
+                    </div>
+                </form>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+<div class="container">
+
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <h1>欢迎来到kbop!</h1>
+        <p>这是一个Kindle 书 在线推送系统！</p>
+        <p id="jumbotron-p"></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <table id="table" class="table">
+                <thead>
+                <tr>
+                    <th>书名</th>
+                    <th>作者</th>
+                    <th>大小</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="booklist-tbody">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 发送邮件对话框 -->
+    <div class="modal fade" id="emailModal" tabindex="-1" role="dialog" aria-labelledby="emailModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="emailModalLabel">发送到我的Kindle</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="email">请输入邮箱</label>
+                            <input id="email" type="email" class="form-control" data-bookId="" placeholder="输入邮箱">
+                        </div>
+                    </form>
+                    <span class="label label-warning">注意</span>
+                    <p>请把 <code>bookunx@163.com</code> 添加为信任邮箱！</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button id="send" type="button" class="btn btn-primary">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="text-align:center">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+
+            <span id="pagination">
+            </span>
+            <div class="input-group">
+                <input id="page" type="text" name="start" class="form-control" placeholder="输入位置">
+                <span class="input-group-btn">
+                    <button id="submit" type="submit" class="btn btn-default">OK</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+
+</div>
+<!-- /container -->
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="//cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

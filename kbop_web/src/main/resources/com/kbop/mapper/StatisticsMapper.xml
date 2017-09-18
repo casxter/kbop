@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kbop.mapper.StatisticsMapper">
+    <resultMap id="BaseResultMap" type="com.kbop.bean.po.Statistics">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="Time" property="time" jdbcType="TIMESTAMP"/>
+        <result column="Key" property="key" jdbcType="LONGVARCHAR"/>
+        <result column="Value" property="value" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ID, Time , Key, Value
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        *
+        from statistics
+        where ID = #{id}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from statistics
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.kbop.bean.po.Statistics">
+    insert into statistics (ID, Time, Key, 
+      Value)
+    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{key,jdbcType=LONGVARCHAR}, 
+      #{value,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.kbop.bean.po.Statistics">
+        insert into statistics
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="time != null">
+                Time,
+            </if>
+            <if test="key != null">
+                Key,
+            </if>
+            <if test="value != null">
+                Value,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="key != null">
+                #{key,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="value != null">
+                #{value,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kbop.bean.po.Statistics">
+        update statistics
+        <set>
+            <if test="time != null">
+                Time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="key != null">
+                Key = #{key,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="value != null">
+                Value = #{value,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kbop.bean.po.Statistics">
+    update statistics
+    set Time = #{time,jdbcType=TIMESTAMP},
+      Key = #{key,jdbcType=LONGVARCHAR},
+      Value = #{value,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.kbop.bean.po.Statistics">
+    update statistics
+    set Time = #{time,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

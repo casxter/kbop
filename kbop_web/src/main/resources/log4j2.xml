@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <properties>
+        <property name="LogPath">../kbop_log</property>
+    </properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{DEFAULT} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+
+        <!--每次重启会重新生成-->
+        <File name="LogFile" fileName="${LogPath}/main.log" append="false">
+            <PatternLayout pattern="%d{DEFAULT} [%t] %-5level %logger{36} - %msg%n"/>
+        </File>
+
+        <RollingFile name="RollingFile" fileName="${LogPath}/kbopweb_rolling.log"
+                     filePattern="${LogPath}/kbopweb-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout>
+                <Pattern>%d{DEFAULT} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+            </Policies>
+            <DefaultRolloverStrategy max="64"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <!--<Logger name="org.springframework.beans.factory" level="DEBUG"/>-->
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="LogFile"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kbop.mapper.HistoryMapper">
+    <resultMap id="BaseResultMap" type="com.kbop.bean.po.History">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="IP" property="ip" jdbcType="VARCHAR"/>
+        <result column="BookID" property="bookid" jdbcType="INTEGER"/>
+        <result column="Event" property="event" jdbcType="VARCHAR"/>
+        <result column="Email" property="email" jdbcType="VARCHAR"/>
+        <result column="Time" property="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, IP, BookID, Event, Email, Time
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from history
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from history
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.kbop.bean.po.History">
+    insert into history (ID, IP, BookID, 
+      Event, Email, Time
+      )
+    values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{bookid,jdbcType=INTEGER}, 
+      #{event,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.kbop.bean.po.History">
+        insert into history
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="ip != null">
+                IP,
+            </if>
+            <if test="bookid != null">
+                BookID,
+            </if>
+            <if test="event != null">
+                Event,
+            </if>
+            <if test="email != null">
+                Email,
+            </if>
+            <if test="time != null">
+                Time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="bookid != null">
+                #{bookid,jdbcType=INTEGER},
+            </if>
+            <if test="event != null">
+                #{event,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kbop.bean.po.History">
+        update history
+        <set>
+            <if test="ip != null">
+                IP = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="bookid != null">
+                BookID = #{bookid,jdbcType=INTEGER},
+            </if>
+            <if test="event != null">
+                Event = #{event,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                Email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                Time = #{time,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.kbop.bean.po.History">
+    update history
+    set IP = #{ip,jdbcType=VARCHAR},
+      BookID = #{bookid,jdbcType=INTEGER},
+      Event = #{event,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Time = #{time,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

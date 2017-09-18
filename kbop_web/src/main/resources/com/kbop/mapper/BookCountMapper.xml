@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kbop.mapper.BookCountMapper">
+    <resultMap id="BaseResultMap" type="com.kbop.bean.po.BookCount">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="DCount" property="dcount" jdbcType="INTEGER"/>
+        <result column="ECount" property="ecount" jdbcType="INTEGER"/>
+        <result column="Time" property="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.kbop.bean.po.BookCount" extends="BaseResultMap">
+        <result column="BookID" property="bookid" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        ID, DCount, ECount, Time, BookID
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from bookcount
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from bookcount
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.kbop.bean.po.BookCount">
+    insert into bookcount (ID, DCount, ECount, 
+      Time, BookID)
+    values (#{id,jdbcType=INTEGER}, #{dcount,jdbcType=INTEGER}, #{ecount,jdbcType=INTEGER}, 
+      #{time,jdbcType=TIMESTAMP}, #{bookid,jdbcType=LONGVARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.kbop.bean.po.BookCount">
+        insert into bookcount
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="dcount != null">
+                DCount,
+            </if>
+            <if test="ecount != null">
+                ECount,
+            </if>
+            <if test="time != null">
+                Time,
+            </if>
+            <if test="bookid != null">
+                BookID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="dcount != null">
+                #{dcount,jdbcType=INTEGER},
+            </if>
+            <if test="ecount != null">
+                #{ecount,jdbcType=INTEGER},
+            </if>
+            <if test="time != null">
+                #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bookid != null">
+                #{bookid,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.kbop.bean.po.BookCount">
+        update bookcount
+        <set>
+            <if test="dcount != null">
+                DCount = #{dcount,jdbcType=INTEGER},
+            </if>
+            <if test="ecount != null">
+                ECount = #{ecount,jdbcType=INTEGER},
+            </if>
+            <if test="time != null">
+                Time = #{time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="bookid != null">
+                BookID = #{bookid,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kbop.bean.po.BookCount">
+    update bookcount
+    set DCount = #{dcount,jdbcType=INTEGER},
+      ECount = #{ecount,jdbcType=INTEGER},
+      Time = #{time,jdbcType=TIMESTAMP},
+      BookID = #{bookid,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateByPrimaryKey" parameterType="com.kbop.bean.po.BookCount">
+    update bookcount
+    set DCount = #{dcount,jdbcType=INTEGER},
+      ECount = #{ecount,jdbcType=INTEGER},
+      Time = #{time,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
