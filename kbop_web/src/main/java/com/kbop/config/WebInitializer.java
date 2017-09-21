@@ -1,5 +1,6 @@
 package com.kbop.config;
 
+import com.alibaba.druid.support.http.WebStatFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
@@ -31,6 +32,11 @@ public class WebInitializer extends AbstractAnnotationConfigDispatcherServletIni
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding(StandardCharsets.UTF_8.name());
         characterEncodingFilter.setForceEncoding(true);
+
+        WebStatFilter wsf = new WebStatFilter();
+
         return new Filter[]{characterEncodingFilter};
     }
+
+
 }

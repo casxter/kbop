@@ -1,8 +1,11 @@
 package com.kbop.config;
 
+import com.alibaba.druid.pool.DruidDataSource;
 import com.github.pagehelper.PageInterceptor;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.ibatis.plugin.Interceptor;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
+import java.sql.SQLException;
 import java.util.Properties;
 
 /**
@@ -27,6 +31,8 @@ import java.util.Properties;
 @PropertySource("classpath:jdbc.properties")
 @EnableTransactionManagement
 public class DataConfig {
+    private static final Logger logger = LogManager.getLogger(DataConfig.class);
+
     @Autowired
     Environment env;
     @Value("${jdbc.driverClassName}")
@@ -39,7 +45,7 @@ public class DataConfig {
     private String JDBC_PASSWORD;
 
     //测试 mysql
-    @Bean
+//    @Bean
 //    @Profile("dev")
     public DataSource devdataSource() {
         BasicDataSource dataSource = new BasicDataSource();
@@ -51,6 +57,22 @@ public class DataConfig {
         dataSource.setPassword("JNaRKZytA7PpbrXe");
 
         return dataSource;
+    }
+
+    @Bean
+    public DataSource druiddataSource() {
+        DruidDataSource dds = new DruidDataSource();
+        dds.setDriverClassName("com.mysql.jdbc.Driver");
+        dds.setUrl("jdbc:mysql://23.106.135.43/kboptest?useSSL=false");
+        dds.setUsername("casxter");
+        dds.setPassword("JNaRKZytA7PpbrXe");
+        try {
+            dds.setFilters("stat");
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+            e.printStackTrace();
+        }
+        return dds;
     }
 
     //生成mysql
