@@ -11,12 +11,12 @@ public class JsonMsg<E> {
     //    消息
     private String msg;
     //    数据
-    private Object data;
+    private E data;
 
     public JsonMsg() {
     }
 
-    public JsonMsg(Integer code, String msg, Object data) {
+    public JsonMsg(Integer code, String msg, E data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
@@ -38,11 +38,11 @@ public class JsonMsg<E> {
         this.msg = msg;
     }
 
-    public Object getData() {
-        return data;
+    public E getData() {
+        return (E) data;
     }
 
-    public void setData(Object data) {
+    public void setData(E data) {
         this.data = data;
     }
 }

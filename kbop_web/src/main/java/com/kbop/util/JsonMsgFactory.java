@@ -60,8 +60,8 @@ public class JsonMsgFactory {
     }
 
 
-    static class OK_JsonMsg extends JsonMsg {
-        public OK_JsonMsg() {
+    static class OK_JsonMsg extends JsonMsg<Object> {
+        OK_JsonMsg() {
             super(JsonMsgCode.OK, JsonMsgConsts.MSG_OK, null);
         }
 
@@ -81,8 +81,8 @@ public class JsonMsgFactory {
         }
     }
 
-    static class ERROR_JsonMsg extends JsonMsg {
-        public ERROR_JsonMsg() {
+    static class ERROR_JsonMsg extends JsonMsg<Object> {
+        ERROR_JsonMsg() {
             super(JsonMsgCode.ERROR, JsonMsgConsts.MSG_ERROR, null);
         }
 
@@ -102,8 +102,8 @@ public class JsonMsgFactory {
         }
     }
 
-    static class FAIL_JsonMsg extends JsonMsg {
-        public FAIL_JsonMsg() {
+    static class FAIL_JsonMsg extends JsonMsg<Object> {
+        FAIL_JsonMsg() {
             super(JsonMsgCode.FAIL, JsonMsgConsts.MSG_FAIL, null);
         }
 
