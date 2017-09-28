@@ -7,8 +7,8 @@ $(function () {
     //第一次载入页面请求
     getbooklist(1);
 
-    function getbooklist(start) {
-        $.getJSON(baseUrl + 'booklist?start=' + start, function (data) {
+    function getbooklist(pageNum) {
+        $.getJSON('/booklist?pageNum=' + pageNum, function (data) {
             var jsondata = data.data;
             if (jsondata != null) {
 
@@ -16,9 +16,9 @@ $(function () {
 
                 $("#jumbotron-p").text('当前共有' + jsondata.totalBookCount + '本书');
 
-                $("#pagination").text(jsondata.start + '/' + jsondata.totalBookCount);
+                $("#pagination").text(jsondata.pageNum + '/' + jsondata.totalBookCount);
 
-                $("#pagination").data("start", jsondata.start);
+                $("#pagination").data("pageNum", jsondata.pageNum);
                 $("#pagination").data("perPageCount", jsondata.perPageCount);
                 $("#pagination").data("totalBookCount", jsondata.totalBookCount);
 
@@ -46,8 +46,8 @@ $(function () {
 
     //分页请求
     $("#submit").click(function () {
-        var pagestart = $('#page').val();
-        getbooklist(pagestart);
+        var pageNum = $('#pageNum').val();
+        getbooklist(pageNum);
     });
 
 
@@ -68,7 +68,7 @@ $(function () {
         console.log(json);
 
         //post请求
-        $.post(baseUrl + '/email', json, function (data) {
+        $.post('/email', json, function (data) {
             var jsonobj = $.parseJSON(data);
             if (jsonobj.code == 0)
                 alert("发送成功");
@@ -81,10 +81,10 @@ $(function () {
 
     $('#searchbtn').click(function () {
         //post请求
-        $.post(baseUrl + 'search',
+        $.post('/search',
             {
                 q: $('#search').val(),
-                start: 1
+                pageNum: 1
             }
             , function (data) {
                 var jsondata = data.data;
@@ -94,9 +94,9 @@ $(function () {
 
                     $("#jumbotron-p").text('当前共有' + jsondata.totalBookCount + '本书');
 
-                    $("#pagination").text(jsondata.start + '/' + jsondata.totalBookCount);
+                    $("#pagination").text(jsondata.pageNum + '/' + jsondata.totalBookCount);
 
-                    $("#pagination").data("start", jsondata.start);
+                    $("#pagination").data("pageNum", jsondata.pageNum);
                     $("#pagination").data("perPageCount", jsondata.perPageCount);
                     $("#pagination").data("totalBookCount", jsondata.totalBookCount);
 

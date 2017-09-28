@@ -68,7 +68,7 @@
 
 <script type="text/javascript">
     $(function () {
-        $.getJSON(baseUrl + 'bookcount', function (data) {
+        $.getJSON('/bookcount', function (data) {
             console.log(data.totalBookCount);
             $("#jumbotron-p").empty();
             $("#jumbotron-p").text('当前共有' + data.totalBookCount + '本书');

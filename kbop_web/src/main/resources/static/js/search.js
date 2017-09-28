@@ -5,7 +5,7 @@ $(function () {
 
     //分页跳转
     $("#submit").click(function () {
-        window.location.href = '/search?q=' + $('#search').attr('data-q') + '&start=' + $('#page').val();
+        window.location.href = '/search?q=' + $('#search').attr('data-q') + '&pageNum=' + $('#pageNum').val();
     });
 
     $(".asend").click(function () {
