@@ -11,10 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by WallaceTang on 2017/5/19.
@@ -27,7 +24,7 @@ public class SearchController {
     @Autowired
     BookMapper bookMapper;
 
-    @RequestMapping("/search")
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
     public JsonMsg<BookListVo> search(
             @RequestParam(value = "q", defaultValue = "") String qstr,
             @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,

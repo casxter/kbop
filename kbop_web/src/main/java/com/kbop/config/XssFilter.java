@@ -1,4 +1,4 @@
-package com.kbop.filter;
+package com.kbop.config;
 
 import com.kbop.util.XssHttpWrapper;
 

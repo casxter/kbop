@@ -10,10 +10,7 @@ import com.kbop.util.JsonMsgFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -29,7 +26,7 @@ public class BookController {
     @Autowired
     BookMapper bookMapper;
 
-    @RequestMapping(value = "/booklist")
+    @RequestMapping(value = "/booklist", method = RequestMethod.POST)
     public JsonMsg<BookListVo> booklist(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
                                         @RequestParam(value = "pageSize", defaultValue = "15") int pageSize) {
 
@@ -40,7 +37,7 @@ public class BookController {
         return JsonMsgFactory.defJsonMsg(booklistvo);
     }
 
-    @RequestMapping(value = "/bookcount")
+    @RequestMapping(value = "/bookcount", method = RequestMethod.GET)
     public JsonMsg<Map<String, Integer>> bookCount() {
         long count = PageHelper.count(() -> bookMapper.queryAll());
         Map<String, Integer> map = new HashMap<>();

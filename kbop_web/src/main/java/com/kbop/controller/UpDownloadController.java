@@ -34,7 +34,7 @@ public class UpDownloadController {
     BookMapper bookMapper;
 
 
-    @RequestMapping("/download")
+    @RequestMapping(value = "/download", method = RequestMethod.GET)
     public void downloadBook(@RequestParam(value = "bookId") int bookId, HttpServletResponse response, HttpServletRequest request) {
         //TODO-WallaceTang 5-19-2017 spring 下载文件
         //服务器流量统计
