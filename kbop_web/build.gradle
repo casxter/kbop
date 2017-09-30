@@ -1,6 +1,9 @@
 group 'com.kbop'
 version '1.0'
 
+def jarFileName = 'kbop_web.jar'
+
+
 buildscript {
     repositories {
         // jcenter()
@@ -20,7 +23,6 @@ apply plugin: 'org.hidetake.ssh'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-
 //跳过测试
 test.enabled = false
 
@@ -31,10 +33,14 @@ idea {
     }
 }
 
+springBoot {
+    executable = true
+}
+
 jar {
     baseName = 'kbop_web'
-    archiveName = 'kbop_web.jar'
-    version =  '0.1.0'
+    archiveName = jarFileName
+    version = '0.1.0'
 }
 
 
@@ -45,7 +51,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'javax.servlet', name: 'jstl', version:"$jstlVersion"
+    compile group: 'javax.servlet', name: 'jstl', version: "$jstlVersion"
 
     //apache commons
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
@@ -89,21 +95,51 @@ dependencies {
 }
 
 remotes {
-    webServer {
+    myvps {
         host = '23.106.135.43'
         user = 'kbop'
         port = 26973
-        password = 'asdf'
+        password = '980c9b2d5336f2bf'
     }
 }
 
 task uname {
     doLast {
         ssh.run {
-            session(remotes.webServer){
+            session(remotes.myvps) {
                 execute 'uname -a'
-//                execute 'free'
             }
         }
     }
 }
+
+task uploadJar {
+    dependsOn assemble
+    doLast {
+        ssh.run {
+            session(remotes.myvps) {
+                put from: "${buildDir}/libs/${jarFileName}", into: '/home/kbop'
+            }
+        }
+    }
+}
+
+task reloadKbop {
+    doLast {
+        ssh.run {
+            session(remotes.myvps) {
+                execute 'echo 980c9b2d5336f2bf | sudo -S systemctl restart kbop'
+                execute 'echo 980c9b2d5336f2bf | sudo -S systemctl status kbop'
+            }
+        }
+    }
+}
+
+task deploy {
+    dependsOn assemble
+    dependsOn uploadJar
+    dependsOn reloadKbop
+}
+
+
+

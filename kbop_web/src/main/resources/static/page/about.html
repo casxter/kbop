@@ -68,10 +68,10 @@
 
 <script type="text/javascript">
     $(function () {
-        $.getJSON('/bookcount', function (data) {
-            console.log(data.totalBookCount);
+        $.getJSON('/bookcount', function (result) {
+            console.log(result.totalBookCount);
             $("#jumbotron-p").empty();
-            $("#jumbotron-p").text('当前共有' + data.totalBookCount + '本书');
+            $("#jumbotron-p").text('当前共有' + result.data.totalBookCount + '本书');
         });
     });
 </script>

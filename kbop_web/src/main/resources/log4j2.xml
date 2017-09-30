@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
     <properties>
-        <property name="LogPath">../kbop_log</property>
+        <property name="LogPath">./kbop_log</property>
     </properties>
 
     <Appenders>

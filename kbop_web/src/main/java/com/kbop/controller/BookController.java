@@ -26,7 +26,7 @@ public class BookController {
     @Autowired
     BookMapper bookMapper;
 
-    @RequestMapping(value = "/booklist", method = RequestMethod.POST)
+    @RequestMapping(value = "/booklist", method = RequestMethod.GET)
     public JsonMsg<BookListVo> booklist(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
                                         @RequestParam(value = "pageSize", defaultValue = "15") int pageSize) {
 

@@ -20,8 +20,8 @@ public class WebConfig {
         srb.setName("druidstatViewServlet");
         srb.addUrlMappings("/druid/*");
 
-        srb.addInitParameter("loginUsername", "casxter");
-        srb.addInitParameter("loginPassword", "JNaRKZytA7PpbrXe");
+        srb.addInitParameter("loginUsername", "kbop");
+        srb.addInitParameter("loginPassword", "980c9b2d5336f2bf");
         srb.addInitParameter("resetEnable", "false");
 
         return srb;

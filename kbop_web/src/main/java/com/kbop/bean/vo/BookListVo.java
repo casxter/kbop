@@ -10,17 +10,17 @@ import java.util.List;
  */
 @Component
 public class BookListVo {
-    int start;
-    int perPageCount;
+    int pageNum;
+    int pageSize;
     int totalBookCount;
     List<Book> list;
 
     public BookListVo() {
     }
 
-    public BookListVo(int start, int perPageCount, int totalBookCount, List<Book> list) {
-        this.start = start;
-        this.perPageCount = perPageCount;
+    public BookListVo(int pageNum, int pageSize, int totalBookCount, List<Book> list) {
+        this.pageNum = pageNum;
+        this.pageSize = pageSize;
         this.totalBookCount = totalBookCount;
         this.list = list;
     }
@@ -41,19 +41,19 @@ public class BookListVo {
         this.list = list;
     }
 
-    public int getStart() {
-        return start;
+    public int getPageNum() {
+        return pageNum;
     }
 
-    public void setStart(int start) {
-        this.start = start;
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 
-    public int getPerPageCount() {
-        return perPageCount;
+    public int getPageSize() {
+        return pageSize;
     }
 
-    public void setPerPageCount(int perPageCount) {
-        this.perPageCount = perPageCount;
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
     }
 }
