@@ -16,7 +16,7 @@ $(function () {
 
                 $("#jumbotron-p").text('当前共有' + jsondata.totalBookCount + '本书');
 
-                $("#pagination").text(((jsondata.pageNum - 1) * jsondata.pageSize + 1) + '/' + jsondata.totalBookCount);
+                $("#pagination").text(jsondata.pageNum + '/' + Math.floor(jsondata.totalBookCount / jsondata.pageSize));
 
                 $("#pagination").data("pageNum", jsondata.pageNum);
                 $("#pagination").data("pageSize", jsondata.pageSize);
@@ -94,7 +94,7 @@ $(function () {
 
                     $("#jumbotron-p").text('当前共有' + jsondata.totalBookCount + '本书');
 
-                    $("#pagination").text(((jsondata.pageNum - 1) * jsondata.pageSize + 1) + '/' + jsondata.totalBookCount);
+                    $("#pagination").text(jsondata.pageNum + '/' + Math.floor(jsondata.totalBookCount / jsondata.pageSize));
 
                     $("#pagination").data("pageNum", jsondata.pageNum);
                     $("#pagination").data("pageSize", jsondata.pageSize);

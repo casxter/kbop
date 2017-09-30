@@ -125,5 +125,6 @@
         select
         <include refid="Base_Column_List"/>
         from book
+        order by ID
     </select>
 </mapper>
