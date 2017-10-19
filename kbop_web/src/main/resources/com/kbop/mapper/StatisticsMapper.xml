@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kbop.mapper.StatisticsMapper">
     <resultMap id="BaseResultMap" type="com.kbop.bean.po.Statistics">
-        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <id column="ID" property="id" jdbcType="BIGINT"/>
         <result column="Time" property="time" jdbcType="TIMESTAMP"/>
         <result column="Key" property="key" jdbcType="LONGVARCHAR"/>
         <result column="Value" property="value" jdbcType="LONGVARCHAR"/>
@@ -11,20 +11,20 @@
     <sql id="Base_Column_List">
         ID, Time , Key, Value
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         *
         from statistics
         where ID = #{id}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from statistics
-    where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
   </delete>
     <insert id="insert" parameterType="com.kbop.bean.po.Statistics">
     insert into statistics (ID, Time, Key, 
       Value)
-    values (#{id,jdbcType=INTEGER}, #{time,jdbcType=TIMESTAMP}, #{key,jdbcType=LONGVARCHAR}, 
+        values (#{id,jdbcType=BIGINT}, #{time,jdbcType=TIMESTAMP}, #{key,jdbcType=LONGVARCHAR},
       #{value,jdbcType=LONGVARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="com.kbop.bean.po.Statistics">
@@ -45,7 +45,7 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-                #{id,jdbcType=INTEGER},
+                #{id,jdbcType=BIGINT},
             </if>
             <if test="time != null">
                 #{time,jdbcType=TIMESTAMP},
@@ -71,18 +71,18 @@
                 Value = #{value,jdbcType=LONGVARCHAR},
             </if>
         </set>
-        where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.kbop.bean.po.Statistics">
     update statistics
     set Time = #{time,jdbcType=TIMESTAMP},
       Key = #{key,jdbcType=LONGVARCHAR},
       Value = #{value,jdbcType=LONGVARCHAR}
-    where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
   </update>
     <update id="updateByPrimaryKey" parameterType="com.kbop.bean.po.Statistics">
     update statistics
     set Time = #{time,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

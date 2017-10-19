@@ -1,6 +1,10 @@
 package com.kbop.bean.vo;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.stereotype.Component;
+
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 /**
  * Created by WallaceTang on 2017/5/19.
@@ -8,8 +12,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmailJson {
 
-    String email;
-    String bookId;
+    @NotNull
+    @Min(value = 1L)
+    Long bookId;
+    @Email
+    @NotNull
+    private String email;
 
     public String getEmail() {
         return email;
@@ -19,11 +27,11 @@ public class EmailJson {
         this.email = email;
     }
 
-    public String getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 }

@@ -12,7 +12,7 @@ public interface BookMapper {
      * @param id
      * @return deleteByID
      */
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     /**
      * @param record
@@ -26,7 +26,7 @@ public interface BookMapper {
      * @param id
      * @return findByID
      */
-    Book selectByPrimaryKey(Integer id);
+    Book selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Book record);
 

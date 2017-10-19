@@ -5,13 +5,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface BookCountMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(BookCount record);
 
     int insertSelective(BookCount record);
 
-    BookCount selectByPrimaryKey(Integer id);
+    BookCount selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(BookCount record);
 

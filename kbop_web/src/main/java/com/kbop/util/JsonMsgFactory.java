@@ -34,27 +34,37 @@ public class JsonMsgFactory {
     }
 
     /**
-     * 默认 JsonMsg
+     * 生成 默认 JsonMsg
      *
      * @param e   data对象
-     * @param <E>
      * @return
      */
-    public static <E> JsonMsg<E> defJsonMsg(E e) {
-        JsonMsg<E> jsonMsg = new JsonMsg<E>();
+    public static JsonMsg defJsonMsg(Object e) {
+        JsonMsg jsonMsg = new JsonMsg();
         jsonMsg.setCode(JsonMsgCode.OK);
         jsonMsg.setMsg(JsonMsgConsts.MSG_OK);
         jsonMsg.setData(e);
         return jsonMsg;
     }
 
-    public static <E> JsonMsg<E> newJsonMsg() {
-        JsonMsg<E> jsonMsg = new JsonMsg<E>();
+    /**
+     * 生成新的JsonMsg对象
+     *
+     * @return
+     */
+    public static JsonMsg newJsonMsg() {
+        JsonMsg jsonMsg = new JsonMsg();
         return jsonMsg;
     }
 
-    public static <E> JsonMsg<E> newJsonMsg(E e) {
-        JsonMsg<E> jsonMsg = new JsonMsg<E>();
+    /**
+     * 生成新的JSonMsg对象，并设置 data
+     *
+     * @param e
+     * @return
+     */
+    public static JsonMsg newJsonMsg(Object e) {
+        JsonMsg jsonMsg = new JsonMsg();
         jsonMsg.setData(e);
         return jsonMsg;
     }

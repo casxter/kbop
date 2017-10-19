@@ -6,11 +6,11 @@ import java.util.Date;
 
 @Component
 public class History {
-    private Integer id;
+    private Long id;
 
     private String ip;
 
-    private Integer bookid;
+    private Long bookid;
 
     private String event;
 
@@ -18,11 +18,11 @@ public class History {
 
     private Date time;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,11 +34,11 @@ public class History {
         this.ip = ip == null ? null : ip.trim();
     }
 
-    public Integer getBookid() {
+    public Long getBookid() {
         return bookid;
     }
 
-    public void setBookid(Integer bookid) {
+    public void setBookid(Long bookid) {
         this.bookid = bookid;
     }
 

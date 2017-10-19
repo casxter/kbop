@@ -39,9 +39,10 @@ public class JsonMsg<E> {
     }
 
     public E getData() {
-        return (E) data;
+        return data;
     }
 
+    @SuppressWarnings(value = "unchecked")
     public void setData(E data) {
         this.data = data;
     }

@@ -28,7 +28,7 @@ public class BookCountMapperTest extends BaseTest {
 
     @Test
     public void selectByPrimaryKey() throws Exception {
-        bookCountMapper.selectByPrimaryKey(18);
+        bookCountMapper.selectByPrimaryKey(18L);
     }
 
     @Test

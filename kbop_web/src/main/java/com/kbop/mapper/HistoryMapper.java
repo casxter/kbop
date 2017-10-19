@@ -5,13 +5,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface HistoryMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(History record);
 
     int insertSelective(History record);
 
-    History selectByPrimaryKey(Integer id);
+    History selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(History record);
 

@@ -27,7 +27,7 @@ public class BookMapperTest {
 
     @Test
     public void selectByPrimaryKey() throws Exception {
-        Book book = bookMapper.selectByPrimaryKey(50);
+        Book book = bookMapper.selectByPrimaryKey(50L);
         System.out.println(book);
     }
 

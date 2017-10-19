@@ -64,7 +64,7 @@ $(function () {
 
         console.log('send email:' + email + ' bookid:' + bookId);
 
-        var json = '{"email":"' + email + '", "bookId":"' + bookId + '"}';
+        var json = '{"email":"' + email + '", "bookId":' + bookId + '}';
         console.log(json);
 
         //post请求

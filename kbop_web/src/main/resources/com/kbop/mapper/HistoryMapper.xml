@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kbop.mapper.HistoryMapper">
     <resultMap id="BaseResultMap" type="com.kbop.bean.po.History">
-        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <id column="ID" property="id" jdbcType="BIGINT"/>
         <result column="IP" property="ip" jdbcType="VARCHAR"/>
-        <result column="BookID" property="bookid" jdbcType="INTEGER"/>
+        <result column="BookID" property="bookid" jdbcType="BIGINT"/>
         <result column="Event" property="event" jdbcType="VARCHAR"/>
         <result column="Email" property="email" jdbcType="VARCHAR"/>
         <result column="Time" property="time" jdbcType="TIMESTAMP"/>
@@ -12,21 +12,21 @@
     <sql id="Base_Column_List">
         ID, IP, BookID, Event, Email, Time
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
         from history
-        where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from history
-    where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
   </delete>
     <insert id="insert" parameterType="com.kbop.bean.po.History">
     insert into history (ID, IP, BookID, 
       Event, Email, Time
       )
-    values (#{id,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{bookid,jdbcType=INTEGER}, 
+        values (#{id,jdbcType=BIGINT}, #{ip,jdbcType=VARCHAR}, #{bookid,jdbcType=BIGINT},
       #{event,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}
       )
   </insert>
@@ -54,13 +54,13 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-                #{id,jdbcType=INTEGER},
+                #{id,jdbcType=BIGINT},
             </if>
             <if test="ip != null">
                 #{ip,jdbcType=VARCHAR},
             </if>
             <if test="bookid != null">
-                #{bookid,jdbcType=INTEGER},
+                #{bookid,jdbcType=BIGINT},
             </if>
             <if test="event != null">
                 #{event,jdbcType=VARCHAR},
@@ -80,7 +80,7 @@
                 IP = #{ip,jdbcType=VARCHAR},
             </if>
             <if test="bookid != null">
-                BookID = #{bookid,jdbcType=INTEGER},
+                BookID = #{bookid,jdbcType=BIGINT},
             </if>
             <if test="event != null">
                 Event = #{event,jdbcType=VARCHAR},
@@ -92,15 +92,15 @@
                 Time = #{time,jdbcType=TIMESTAMP},
             </if>
         </set>
-        where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.kbop.bean.po.History">
     update history
     set IP = #{ip,jdbcType=VARCHAR},
-      BookID = #{bookid,jdbcType=INTEGER},
+        BookID = #{bookid,jdbcType=BIGINT},
       Event = #{event,jdbcType=VARCHAR},
       Email = #{email,jdbcType=VARCHAR},
       Time = #{time,jdbcType=TIMESTAMP}
-    where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

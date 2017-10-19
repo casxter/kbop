@@ -51,8 +51,6 @@ repositories {
 }
 
 dependencies {
-    compile group: 'javax.servlet', name: 'jstl', version: "$jstlVersion"
-
     //apache commons
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.5'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
@@ -64,8 +62,9 @@ dependencies {
 
     compile group: 'com.google.guava', name: 'guava', version: '23.0'
 
-    //spring
+    //spring boot
     compile("org.springframework.boot:spring-boot-starter")
+    compile("org.springframework.boot:spring-boot-starter-aop")
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
@@ -82,9 +81,6 @@ dependencies {
     compile("com.github.pagehelper:pagehelper-spring-boot-starter:1.2.1")
 //    compile group: 'redis.clients', name: 'jedis', version: '2.9.0'
 
-    //aop
-    compile("org.aspectj:aspectjweaver:${aspectJVersion}")
-    compile("org.aspectj:aspectjrt:${aspectJVersion}")
 
     //swagger
     compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.7.0'

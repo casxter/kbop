@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Component
 public class Statistics {
-    private Integer id;
+    private Long id;
 
     private String key;
 
@@ -14,11 +14,11 @@ public class Statistics {
 
     private Date time;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

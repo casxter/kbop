@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Component
 public class BookCount {
-    private Integer id;
+    private Long id;
 
     private Integer dcount;
 
@@ -14,13 +14,13 @@ public class BookCount {
 
     private Date time;
 
-    private String bookid;
+    private Long bookid;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -48,11 +48,11 @@ public class BookCount {
         this.time = time;
     }
 
-    public String getBookid() {
+    public Long getBookid() {
         return bookid;
     }
 
-    public void setBookid(String bookid) {
-        this.bookid = bookid == null ? null : bookid.trim();
+    public void setBookid(Long bookid) {
+        this.bookid = bookid;
     }
 }

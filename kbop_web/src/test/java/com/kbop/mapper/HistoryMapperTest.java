@@ -28,7 +28,7 @@ public class HistoryMapperTest extends BaseTest {
 
     @Test
     public void selectByPrimaryKey() throws Exception {
-        historyMapper.selectByPrimaryKey(27);
+        historyMapper.selectByPrimaryKey(27L);
     }
 
     @Test

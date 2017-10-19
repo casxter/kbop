@@ -19,6 +19,7 @@ public class WebConfig {
         srb.setServlet(new StatViewServlet());
         srb.setName("druidstatViewServlet");
         srb.addUrlMappings("/druid/*");
+        srb.setOrder(1);
 
         srb.addInitParameter("loginUsername", "kbop");
         srb.addInitParameter("loginPassword", "980c9b2d5336f2bf");
@@ -35,6 +36,7 @@ public class WebConfig {
         frb.setName("druidwebStatFilter");
         frb.addUrlPatterns("/*");
         frb.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
+        frb.setOrder(1);
 
         return frb;
     }

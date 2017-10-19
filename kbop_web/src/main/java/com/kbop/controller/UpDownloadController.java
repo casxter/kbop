@@ -35,15 +35,14 @@ public class UpDownloadController {
 
 
     @RequestMapping(value = "/download", method = RequestMethod.GET)
-    public void downloadBook(@RequestParam(value = "bookId") int bookId, HttpServletResponse response, HttpServletRequest request) {
+    public void downloadBook(@RequestParam(value = "bookId") long bookId, HttpServletResponse response, HttpServletRequest request) {
         //TODO-WallaceTang 5-19-2017 spring 下载文件
         //服务器流量统计
 
-        int id = Integer.valueOf(bookId);
-        Book book = bookMapper.selectByPrimaryKey(id);
+        Book book = bookMapper.selectByPrimaryKey(bookId);
 
         if (book != null) {
-            logger.info("download book id: " + id);
+            logger.info("download book id: " + bookId);
 
             String fileName = book.getUrl();
             String filePathName = KBOPConsts.BOOK_DIR_PATH + fileName;

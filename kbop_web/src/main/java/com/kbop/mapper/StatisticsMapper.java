@@ -5,13 +5,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface StatisticsMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Statistics record);
 
     int insertSelective(Statistics record);
 
-    Statistics selectByPrimaryKey(Integer id);
+    Statistics selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(Statistics record);
 

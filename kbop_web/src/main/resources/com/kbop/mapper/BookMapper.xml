@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kbop.mapper.BookMapper">
     <resultMap id="BaseResultMap" type="com.kbop.bean.po.Book">
-        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <id column="ID" property="id" jdbcType="BIGINT"/>
         <result column="BookName" property="bookName" jdbcType="VARCHAR"/>
         <result column="Ext" property="ext" jdbcType="VARCHAR"/>
         <result column="URL" property="url" jdbcType="VARCHAR"/>
@@ -13,21 +13,21 @@
     <sql id="Base_Column_List">
         ID, BookName, Ext, URL, Size, Time, Author
     </sql>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
         select
         <include refid="Base_Column_List"/>
         from book
-        where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
     </select>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from book
-    where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
   </delete>
     <insert id="insert" parameterType="com.kbop.bean.po.Book">
     insert into book (ID, BookName, Ext, 
       URL, Size, Time, 
       Author)
-    values (#{id,jdbcType=INTEGER}, #{bookname,jdbcType=VARCHAR}, #{ext,jdbcType=VARCHAR}, 
+        values (#{id,jdbcType=BIGINT}, #{bookname,jdbcType=VARCHAR}, #{ext,jdbcType=VARCHAR},
       #{url,jdbcType=VARCHAR}, #{size,jdbcType=VARCHAR}, #{time,jdbcType=TIMESTAMP}, 
       #{author,jdbcType=LONGVARCHAR})
   </insert>
@@ -58,7 +58,7 @@
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
-                #{id,jdbcType=INTEGER},
+                #{id,jdbcType=BIGINT},
             </if>
             <if test="bookname != null">
                 #{bookname,jdbcType=VARCHAR},
@@ -102,7 +102,7 @@
                 Author = #{author,jdbcType=LONGVARCHAR},
             </if>
         </set>
-        where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.kbop.bean.po.Book">
     update book
@@ -112,7 +112,7 @@
       Size = #{size,jdbcType=VARCHAR},
       Time = #{time,jdbcType=TIMESTAMP}
       Author = #{author,jdbcType=LONGVARCHAR}
-    where ID = #{id,jdbcType=INTEGER}
+        where ID = #{id,jdbcType=BIGINT}
   </update>
     <select id="findByBookName" resultMap="BaseResultMap" parameterType="String">
         SELECT

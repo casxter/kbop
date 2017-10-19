@@ -28,7 +28,7 @@ public class StatisticsMapperTest extends BaseTest {
 
     @Test
     public void selectByPrimaryKey() throws Exception {
-        System.out.println(statisticsMapper.selectByPrimaryKey(1479));
+        System.out.println(statisticsMapper.selectByPrimaryKey(1479L));
     }
 
     @Test

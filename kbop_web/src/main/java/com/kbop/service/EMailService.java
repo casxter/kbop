@@ -6,5 +6,5 @@ package com.kbop.service;
 public interface EMailService {
     boolean sendMail(String recver, String subject, String text);
 
-    boolean sendMailWithFile(String recver, String subject, String text, String uri);
+    boolean sendBook(String email, Long bookId);
 }
