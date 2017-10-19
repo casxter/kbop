@@ -17,12 +17,12 @@ public class ServiceLogAop {
 
     //com.kbop.service.impl 包下的所有类 所有方法
     @Pointcut(value = "execution(* com.kbop.service.*.*(..))")
-    public void logInvokeStatistics() {
+    public void serviceInvokeLog() {
     }
 
 
-    @Before(value = "logInvokeStatistics()")
-    public void logInvokeStatisticsBefore() {
+    @Before(value = "serviceInvokeLog()")
+    public void serviceInvokeLogBefore() {
         logger.info("logInvokeStatisticsBefore");
     }
 }

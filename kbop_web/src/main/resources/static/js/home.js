@@ -50,8 +50,7 @@ $(function () {
         getbooklist(pageNum);
     });
 
-
-    $(".asend").click(function () {
+    $('#booklist-tbody').on('click', '.asend', function () {
         console.log(".asend");
         console.log("bookid:" + $(this).attr("data-bookid"));
         $('#email').data('bookid', $(this).attr("data-bookid"));
@@ -62,10 +61,10 @@ $(function () {
         var email = $('#email').val();
         var bookId = $('#email').data('bookid');
 
-        console.log('send email:' + email + ' bookid:' + bookId);
 
-        var json = '{"email":"' + email + '", "bookId":' + bookId + '}';
-        console.log(json);
+        var json = '{"email":' + email + ',"bookId":' + bookId + '}';
+
+        console.log('send email: ' + json);
 
         //post请求
         $.post('/email', json, function (data) {
@@ -74,9 +73,8 @@ $(function () {
                 alert("发送成功");
             else
                 alert("发送失败");
-        }).error(function () {
-            alert("发送失败");
         });
+
     });
 
     $('#searchbtn').click(function () {
@@ -121,4 +119,6 @@ $(function () {
                 }
             });
     });
+
+
 });
