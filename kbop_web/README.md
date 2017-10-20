@@ -18,3 +18,24 @@ MySQL: 5.7
 ### Swagger
 api 文档json: `http://localhost:8081/v2/api-docs`
 api 文档页面: `http://localhost:8081/swagger-ui.html`
+
+### docker
+
+Dockerfile
+
+```
+FROM openjdk
+VOLUME /tmp
+COPY kbop_web.jar /home/
+EXPOSE 8081 8081
+ENV JAVA_OPTS=""
+ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /home/kbop_web.jar
+```
+
+```bash
+docker stop $(docker ps -a -q); \
+docker rm $(docker ps -a -q); \
+docker rmi kbop_web; \
+docker build -t kbop_web .; \ 
+docker run -p 8081:8081 -d kbop_web
+```

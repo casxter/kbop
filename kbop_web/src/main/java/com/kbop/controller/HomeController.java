@@ -9,8 +9,7 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String home() {
-
-        return "forward:/page/home.html";
+        return "forward:page/home.html";
     }
 
     @RequestMapping(value = "empty", method = RequestMethod.GET)

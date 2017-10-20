@@ -98,6 +98,11 @@ remotes {
         port = 26973
         password = '980c9b2d5336f2bf'
     }
+    localnetwork {
+        host = '192.168.1.197'
+        user = 'kbop'
+        password = '980c9b2d5336f2bf'
+    }
 }
 
 task uname {
@@ -111,11 +116,20 @@ task uname {
 }
 
 task uploadJar {
-    dependsOn assemble
     doLast {
         ssh.run {
             session(remotes.myvps) {
                 put from: "${buildDir}/libs/${jarFileName}", into: '/home/kbop'
+            }
+        }
+    }
+}
+
+task uploadJarlocalnetwork {
+    doLast {
+        ssh.run {
+            session(remotes.localnetwork) {
+                put from: "${buildDir}/libs/${jarFileName}", into: '/home/work'
             }
         }
     }
