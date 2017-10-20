@@ -63,7 +63,6 @@ $(function () {
 
 
         var json = '{"email":' + email + ',"bookId":' + bookId + '}';
-
         console.log('send email: ' + json);
 
         //post请求
