@@ -2,6 +2,8 @@
 
 ### 环境配置
 
+硬盘: > 5G
+内存: > 1G
 tomcat: 8.5+
 jetty:9.4
 gradle: 3.5
@@ -9,6 +11,8 @@ jdk: 1.8
 spring: 4.3.8
 spring boot: 1.5.7
 MySQL: 5.7
+docker: > 17
+
 
 ### 简介
 - 使用RESTful API
