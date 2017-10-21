@@ -1,0 +1,10 @@
+Content-Type: application/Json
+Content-Length: 49
+Source message
+
+POST /api/tsims/login HTTP/1.1
+HOST: 10.1.4.137:8002
+content-type: application/Json
+content-length: 49
+
+{"user_num": "13110033140", "password": "123456"}
