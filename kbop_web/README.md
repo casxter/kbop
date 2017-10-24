@@ -23,23 +23,29 @@ docker: > 17
 api 文档json: `http://localhost:8081/v2/api-docs`
 api 文档页面: `http://localhost:8081/swagger-ui.html`
 
+### druid
+
+监控页面 `/druid/`
+
+账号密码
+`kbop 980c9b2d5336f2bf`
+
+### jmx
+
+端口:`127.0.0.1:8082`
+
 ### docker
 
-Dockerfile
-
-```
-FROM openjdk
-VOLUME /tmp
-COPY kbop_web.jar /home/
-EXPOSE 8081 8081
-ENV JAVA_OPTS=""
-ENTRYPOINT exec java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /home/kbop_web.jar
-```
-
+mysql
 ```bash
-docker stop $(docker ps -a -q); \
-docker rm $(docker ps -a -q); \
-docker rmi kbop_web; \
-docker build -t kbop_web .; \ 
-docker run -p 8081:8081 -d kbop_web
+docker run --name mymysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=JNaRKZytA7PpbrXe -d mysql ;
+mysql -h 127.0.0.1 -uroot -pJNaRKZytA7PpbrXe -e "create user casxter@'%' identified by 'JNaRKZytA7PpbrXe'" ;
+mysql -h 127.0.0.1 -uroot -pJNaRKZytA7PpbrXe -e "grant ALL on *.* to casxter@'%'" ;
+mysql -h 127.0.0.1 -uroot -pJNaRKZytA7PpbrXe -e "flush privileges;"
 ```
+
+kbop_web
+
+Dockerfile -> ./docker/Dockerfile
+
+sh -> ./docker/rerunDocker.sh
