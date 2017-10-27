@@ -6,18 +6,18 @@
 
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{DEFAULT} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{DEFAULT} [%t] %-5level %logger{36} - %m %ex %n"/>
         </Console>
 
         <!--每次重启会重新生成-->
         <File name="LogFile" fileName="${LogPath}/main.log" append="false">
-            <PatternLayout pattern="%d{DEFAULT} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{DEFAULT} [%t] %-5level %logger{36} - %m %ex %n"/>
         </File>
 
         <RollingFile name="RollingFile" fileName="${LogPath}/kbopweb_rolling.log"
                      filePattern="${LogPath}/kbopweb-%d{yyyy-MM-dd}.log.gz">
             <PatternLayout>
-                <Pattern>%d{DEFAULT} [%t] %-5level %logger{36} - %msg%n</Pattern>
+                <Pattern>%d{DEFAULT} [%t] %-5level %logger{36} - %m %ex %n</Pattern>
             </PatternLayout>
             <Policies>
                 <TimeBasedTriggeringPolicy interval="1"/>

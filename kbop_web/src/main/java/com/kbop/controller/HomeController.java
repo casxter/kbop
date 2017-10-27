@@ -14,7 +14,7 @@ public class HomeController {
 
     @RequestMapping(value = "empty", method = RequestMethod.GET)
     public String empty() {
-        return "";
+        throw new NullPointerException("fk");
     }
 
 }
